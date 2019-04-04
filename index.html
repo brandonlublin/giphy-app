@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Giphy Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="assets/javascript/app.js"></script>
+</head>
+
+<body>
+    <img src='assets/images/waves.jpg' id='background-image'>
+    <h1 id='header'>Sports GIFs</h1>
+    <div class='row justify-content-left'>
+        <div class='col-md-10'>
+            <div class='gifButtonArray'></div>
+        </div>
+    </div>
+    <form>
+        <div class="row">
+            <h2 id='find-gif'>Find a GIF:</h2>
+        </div>
+        <div class="row">
+            <input type="text" id='enter-text-box' placeholder='enter text here...'>
+            <button type="button" class="btn btn-primary btn-lg" id='searchButton'>Search</button>
+        </div>
+    </form>
+    <div id='results'></div>
+
+</body>
+
+</html>
