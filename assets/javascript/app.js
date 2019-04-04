@@ -32,13 +32,11 @@ $(document).ready(function() {
             method: "GET"
         }).then(function(response) {
             console.log(response.data);
-            // var imageUrl = response.data.bitly_gif_url;
             for (let i = 0; i < response.data.length; i++) {
                 var searchDiv = $('<div class="search-item">');
                 var rating = response.data[i].rating;
                 var data = response.data[i].images;
                 var p = $('<p>').css('font-family', '"Poppins", sans-serif').text('Rating: ' + rating);
-                //still version of 
                 var animated = data.fixed_height.url;
                 var still = data.fixed_height_still.url;
                 var image = $('<img>');
@@ -47,7 +45,7 @@ $(document).ready(function() {
                 image.attr('data-animated', animated);
                 image.attr('data-state', 'still');
                 image.addClass('searchImage');
-                searchDiv.prepend(p); // identify rating of the gif
+                searchDiv.prepend(p);
                 searchDiv.append(image);
                 $('#results').prepend(searchDiv);
 
