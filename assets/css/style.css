@@ -6,7 +6,7 @@
     height: 1000%;
     z-index: -10;
     opacity: .4;
-    background-repeat: repeat;
+    /* background-repeat: repeat; */
 }
 #topicButtons {
     display: inline-flex;
