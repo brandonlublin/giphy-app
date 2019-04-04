@@ -1,18 +1,20 @@
 // TODO: Generate buttons for array items
 $(document).ready(function() {
+    //array of topics
     var topics = ['Russell Wilson', 'Seahawks', 'Russell Westbrook', 'Seattle Sonics', 'Allen Iverson', 'Boise State', 'Sounders', 'Soccer', 'Cristiano Ronaldo', 'Borussia Dortmund', 'Bayern Munich', 'Manchester United', 'Doug Baldwin', 'Lebron James'];
     function createHtmlButtons() {
         for (let i = 0; i < topics.length; i++) {
-            // var buttonDiv = $('<div>').addClass('buttonText')
+            // $('.gifButtonArray').empty();
             var a = $('<button>');
+            //add classes and attributes to each button from array
             a.addClass('btn btn-primary btn-lg');
             a.attr('data-name', topics[i]);
             a.attr('id', 'topicButtons');
             a.text(topics[i]);
         
+            //append each button from array to the gifButtonArray div
             $('.gifButtonArray').append(a);
-            // buttonDiv.append(a);
-            // console.log(a);
+            $('#enter-text-box').empty();
         }
     }
     createHtmlButtons();
@@ -24,29 +26,32 @@ $(document).ready(function() {
         var apiKey = 'Sa76H1kYiJwFnZVm1ICYt8jFr8ukfLKj';
         //query url with apikey, topics array, limit, and rating parameters set
         var queryUrl = 'https://api.giphy.com/v1/gifs/search?q=' + searchInput + '&limit=10&api_key=' + apiKey;
-        console.log(queryUrl);
         
         //query the db using above query url
         $.ajax({
             url: queryUrl,
             method: "GET"
         }).then(function(response) {
-            console.log(response.data);
+            
+            //pan through each query and select data 
             for (let i = 0; i < response.data.length; i++) {
-                var searchDiv = $('<div class="search-item">');
+                //builds a bootstrap card and assigns it to a variable
+                var searchDiv = $('<div class="card" style="width: 300px;">')
+                                .append(image)
+                                .append(p);
                 var rating = response.data[i].rating;
                 var data = response.data[i].images;
                 var p = $('<p>').css('font-family', '"Poppins", sans-serif').text('Rating: ' + rating);
                 var animated = data.fixed_height.url;
                 var still = data.fixed_height_still.url;
-                var image = $('<img>');
-                image.attr('src', still);
-                image.attr('data-still', still);
-                image.attr('data-animated', animated);
-                image.attr('data-state', 'still');
-                image.addClass('searchImage');
-                searchDiv.prepend(p);
-                searchDiv.append(image);
+                //build bootstrap cards for each image, assign individual still and animated properties
+                var image = $('<img class="card-img-top">')
+                            .attr('src', still)
+                            .attr('data-still', still)
+                            .attr('data-animated', animated)
+                            .attr('data-state', 'still')
+                            .addClass('searchImage');
+
                 $('#results').prepend(searchDiv);
 
             }
@@ -55,10 +60,10 @@ $(document).ready(function() {
         
     //function to add input by user into a button
     $('#searchButton').on('click', function(event){
+        $('.gifButtonArray').empty();
         event.preventDefault();
         //pulls text from input box
         var newCategory = $('#enter-text-box').val().trim();
-        
         //adds user input to topics array 
         topics.push(newCategory);
         
