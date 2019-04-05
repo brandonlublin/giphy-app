@@ -21,6 +21,7 @@ $(document).ready(function() {
 
     // TODO: if button clicked for certain GIF type, display 10 GIFs for that category
     $(document).on('click', '#topicButtons', function(event) {
+        $('#results').empty();
         var searchInput = $(this).attr("data-name");
         // api key used to query the giphy url
         var apiKey = 'Sa76H1kYiJwFnZVm1ICYt8jFr8ukfLKj';
