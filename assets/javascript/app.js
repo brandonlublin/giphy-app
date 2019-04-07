@@ -37,9 +37,6 @@ $(document).ready(function() {
             //pan through each query and select data 
             for (let i = 0; i < response.data.length; i++) {
                 //builds a bootstrap card and assigns it to a variable
-                var searchDiv = $('<div class="card" style="width: 300px;">')
-                                .append(image)
-                                .append(p);
                 var rating = response.data[i].rating;
                 var data = response.data[i].images;
                 var p = $('<p>').css('font-family', '"Poppins", sans-serif').text('Rating: ' + rating);
@@ -53,6 +50,10 @@ $(document).ready(function() {
                             .attr('data-state', 'still')
                             .addClass('searchImage');
 
+                var searchDiv = $('<div class="card" style="width: 300px;">')
+                    .append(image)
+                    .append(p);
+                    
                 $('#results').prepend(searchDiv);
 
             }
